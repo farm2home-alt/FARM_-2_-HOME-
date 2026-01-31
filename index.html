@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FARM 2 HOME - All in One</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS ഭാഗം (Style.css ഇതിലേക്ക് ചേർത്തു) --- */
+        :root {
+            --primary: #2e7d32;
+            --secondary: #388e3c;
+            --bg: #f4f8f4;
+        }
+        header { 
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bg.jpg');
+        background-size: cover;
+        background-position: center;
+        color: #FFC300; 
+        text-align: center; 
+        padding: 40px 20px; 
+        border-radius: 0 0 20px 20px; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+    }
+    header h1 {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 700; /* Extra Bold ലുക്കിന് */
+    font-size: 3.0rem;
+    text-transform: uppercase;
+    letter-spacing: -1px; /* അക്ഷരങ്ങൾ അടുപ്പിച്ചു വെക്കുമ്പോൾ കൂടുതൽ ലുക്ക് കിട്ടും */
+    color:  white;
+    margin: 0;
+    text-shadow: 0px 4px 10px rgba(0,0,0,0.25);
+}
+
+/* സബ് ഹെഡിംഗിനും ഇതേ ഫോണ്ട് വേണമെങ്കിൽ */
+
+    header p {
+    font-family: 'Chilanka', cursive;
+    font-size: 1.0rem; /* അല്പം വലുതാക്കി */
+    color: #f0f0f0;
+
+
+}
+
+
+        body { font-family: Arial, sans-serif; margin: 0; background-color: var(--bg); color: #333; }
+        .page { display: none; padding-bottom: 50px; } /* എല്ലാ പേജും ആദ്യം മറച്ചു വെക്കുന്നു */
+        .active { display: block; animation: fadeIn 0.5s; } /* സെലക്ട് ചെയ്യുന്ന പേജ് മാത്രം കാണിക്കുന്നു */
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+       
+        /* കാർഡ് സ്റ്റൈലുകൾ */
+        .card { background: white; border: 2px solid var(--primary); border-radius: 15px; padding: 20px; margin-bottom: 20px; text-align: center; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .card:hover { transform: translateY(-5px); background-color: #f1f8e9; }
+        .card h3 { margin: 10px 0; color: var(--primary); }
+        .card ul { list-style: none; padding: 0; text-align: left; font-size: 0.9em; }
+        .card ul li::before { content: "✅ "; }
+
+        /* ഫോമും ബട്ടണുകളും */
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+        .btn-main { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; }
+        .btn-orange { background: #ff9800; color: white; border: none; padding: 15px; border-radius: 10px; width: 100%; font-size: 1.1rem; cursor: pointer; margin-top: 15px; }
+        .btn-back { background: rgba(255,255,255,0.2); border: 1px solid white; color: white; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-bottom: 10px; }
+
+        /* ഗ്രിഡ് സ്റ്റൈൽ */
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .product-item { background: white; padding: 15px; border-radius: 12px; border: 1px solid #ddd; text-align: center; }
+        
+        .table-box { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; margin-top: 10px; }
+        .table-box th, .table-box td { border: 1px solid #eee; padding: 12px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div id="indexPage" class="page active">
+        <header>
+            <div class="header-container" style="display: flex; flex-direction: column; align-items: center;">
+            
+            <div class="logo-icon-box" style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 10px auto; background: white;">
+                <img src="logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+
+        </div>
+            <h1>FARM 2 HOME</h1>
+            <p>പച്ചക്കറികൾ നേരിട്ട് നിങ്ങളുടെ വീട്ടിലേക്ക്</p>
+            <link href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap" rel="stylesheet">
+
+        </header>
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary);">ലോഗിൻ ചെയ്യുക</h2>
+            <div class="card" onclick="showPage('farmerPage')">
+                <div style="font-size: 40px;">👨‍🌾</div>
+                <h3>ഞാൻ കർഷകനാണ്</h3>
+                <ul>
+                    <li>വിപണി വില അറിയാം</li>
+                    <li>പ്ലാന്റ് ഡോക്ടർ സ്കാനിംഗ്</li>
+                    <li>വിളകൾ ലിസ്റ്റ് ചെയ്യാം</li>
+                </ul>
+            </div>
+            <div class="card" onclick="showPage('customerPage')">
+                <div style="font-size: 40px;">🛒</div>
+                <h3>ഞാൻ ഉപഭോക്താവാണ്</h3>
+                <ul>
+                    <li>നാട്ടുപെട്ടി സബ്‌സ്‌ക്രിപ്‌ഷൻ</li>
+                    <li>ഫ്രഷ് ഉൽപ്പന്നങ്ങൾ വാങ്ങാം</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="farmerPage" class="page">
+        <header>
+            <button class="btn-back" onclick="showPage('indexPage')">⬅ Back</button>
+            <h1>Farmer Zone</h1>
+        </header>
+        <div class="container">
+            <div class="card" style="text-align: left; border: none; cursor: default;">
+                <h3>പുതിയ ഉൽപ്പന്നം ചേർക്കുക ➕</h3>
+                <input type="text" id="pName" placeholder="വിളയുടെ പേര്">
+                <input type="text" id="pPrice" placeholder="വില (₹/Kg)">
+                <input type="text" id="fName" placeholder="കർഷകൻ്റെ പേര്">
+                <input type="tel" id="fContact" placeholder="കർഷകന്റെ നമ്പർ">
+                <button class="btn-main" onclick="addFarmerProduct()">ലിസ്റ്റിൽ ചേർക്കുക</button>
+            </div>
+
+            <h3>നിങ്ങൾ ചേർത്ത ഉൽപ്പന്നങ്ങൾ 📋</h3>
+            <div id="farmerProductDisplay"></div>
+
+            <div class="card" style="background: #e8f5e9; margin-top: 20px;">
+                <h3>പ്ലാന്റ് ഡോക്ടർ 🩺</h3>
+                <p>രോഗങ്ങൾ കണ്ടെത്താൻ ഫോട്ടോ അയക്കൂ.</p>
+                <button class="btn-main" style="background: #25D366;" onclick="window.open('https://wa.me/918089475765?text=Hi,ഹലോ, എന്റെ ചെടിക്ക് ഒരു അസുഖം കണ്ടു. ഇതിന്റെ ഫോട്ടോ ഞാൻ താഴെ അയക്കുന്നു. ഇതൊന്ന് പരിശോധിക്കാമോ?')">WhatsApp Help</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="customerPage" class="page">
+        <header>
+            <button class="btn-back" onclick="showPage('indexPage')">⬅ Back</button>
+            <h1>Customer Zone</h1>
+        </header>
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary);">ലഭ്യമായ ഉൽപ്പന്നങ്ങൾ 🥗</h2>
+            <div id="customerProductList" class="product-grid"></div>
+            
+            
+            <button class="btn-orange" id="boxBtn" onclick="showBoxDetails()">🛒 എന്റെ പെട്ടി കാണുക (0)</button>
+
+<div id="boxModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000;">
+    <div style="background:white; width:85%; max-width:400px; margin:20% auto; padding:20px; border-radius:15px; position:relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+        <span onclick="closeModal()" style="position:absolute; right:15px; top:10px; font-size:28px; cursor:pointer; color:#888;">&times;</span>
+        
+        <h3 style="color:#2e7d32; text-align:center; margin-top:0;">എന്റെ പെട്ടി 📦</h3>
+        <hr style="border:0; border-top:1px solid #eee;">
+        
+        <div id="boxItemsList" style="max-height:200px; overflow-y:auto; margin:15px 0; padding:10px; background:#f9f9f9; border-radius:8px;"></div>
+        
+        <button class="btn-main" onclick="orderViaWhatsApp()" style="background:#25D366; display:flex; align-items:center; justify-content:center; gap:10px;">
+             WhatsApp വഴി ഓർഡർ ചെയ്യുക
+        </button>
+    </div>
+</div>
+
+
+   
+            <div class="card" style="background: #f1f8e9; margin-top: 20px; border-style: dashed;">
+    <h3>ബാർട്ടർ എക്സ്ചേഞ്ച് ♻️</h3>
+    <p>ജൈവമാലിന്യം നൽകി പണം ലാഭിക്കൂ (1kg = ₹5 ഡിസ്കൗണ്ട്)</p>
+    
+    <input type="number" id="wasteAmount" placeholder="മാലിന്യത്തിന്റെ അളവ് (Kg)" oninput="calculateDiscount()">
+    
+    <p>നിങ്ങൾക്ക് ഡിസ്കൗണ്ട് ഉണ്ട്: <strong>₹<span id="discountDisplay">0.00</span></strong></p>
+    
+    <button class="btn-main" onclick="applyBarterDiscount()">Apply Discount</button>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        // പേജുകൾ നിയന്ത്രിക്കാൻ
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            if(pageId === 'customerPage') loadCustomerProducts();
+            if(pageId === 'farmerPage') loadFarmerProducts();
+        }
+
+        // ഡാറ്റ സ്റ്റോറേജ്
+        let products = JSON.parse(localStorage.getItem('farmerProducts')) || [];
+        let myBox = JSON.parse(localStorage.getItem('myBox')) || [];
+
+        // കർഷകൻ സാധനം ചേർക്കുമ്പോൾ
+        function addFarmerProduct() {
+            const name = document.getElementById('pName').value;
+            const price = document.getElementById('pPrice').value;
+            const farmer = document.getElementById('fName').value;
+            const contact = document.getElementById('fContact').value;
+            if(name && price && farmer && contact ) {
+                products.push({ id: Date.now(), name, price, farmer, contact });
+                localStorage.setItem('farmerProducts', JSON.stringify(products));
+                alert("വിജയകരമായി ചേർത്തു!");
+                document.getElementById('pName').value = '';
+               document.getElementById('pPrice').value = ''; 
+               document.getElementById("fContact").value=""  ;
+                             
+                loadFarmerProducts();
+            } else {
+                alert("എല്ലാ വിവരങ്ങളും നൽകുക");
+            }
+        }
+
+        // കർഷകന്റെ ലിസ്റ്റ് കാണിക്കാൻ
+        function loadFarmerProducts() {
+            const div = document.getElementById('farmerProductDisplay');
+            div.innerHTML = products.length === 0 ? '<p>ഒന്നും ചേർത്തിട്ടില്ല.</p>' : '';
+            products.forEach(p => {
+                div.innerHTML += `
+                    <div class="card" style="text-align:left; padding:10px; border-width:1px;">
+                        <strong>${p.name}</strong> - ₹${p.price} <br>
+                        <small>കർഷകൻ: ${p.farmer}</small>
+                        <small>കർഷകൻ്റെ നമ്പർ: ${p.contact}</small>
+                    <button onclick="deleteProduct(${p.id})" 
+                    style="color:red; border:none; background:none; cursor:pointer; font-size:12px; float:right; margin-top:5px;">
+                    ഒഴിവാക്കുക
+                </button>
+                <div 
+                style="clear:both;"></div>
+            </div>`;
+                    
+            });
+        }
+
+        function deleteProduct(id) {
+            products = products.filter(p => p.id !== id);
+            localStorage.setItem('farmerProducts', JSON.stringify(products));
+            loadFarmerProducts();
+        }
+
+        // കസ്റ്റമർ ലിസ്റ്റ് കാണിക്കാൻ
+        // 1. കസ്റ്റമർ സോണിലെ ലിസ്റ്റ് പുതുക്കാൻ (Line 244)
+function loadCustomerProducts() {
+    const list = document.getElementById('customerProductList');
+    list.innerHTML = products.length === 0 ? '<p style="grid-column:1/3">ഇപ്പോൾ സാധനങ്ങൾ ഒന്നുമില്ല.</p>' : '';
+
+    products.forEach(p => {
+        list.innerHTML += `
+            <div class="product-item">
+                <div style="font-size:30px">🥦</div>
+                <h4>${p.name}</h4>
+                <p style="color:var(--primary); font-weight:bold;">₹${p.price}</p>
+                <button class="btn-main" style="padding:5px; font-size:12px;" 
+                    onclick="addToBox('${p.name}', '${p.farmer}', '${p.contact}')">
+                    📦 പെട്ടിയിലേക്ക്
+                </button>
+            </div>`;
+    });
+    updateBoxCount();
+}
+
+// 2. പെട്ടിയിലേക്ക് നമ്പർ കൂടി സേവ് ചെയ്യാൻ (Line 260)
+function addToBox(name, farmer, contact) {
+    const item = { name, farmer, contact };
+    myBox.push(item); // ഒബ്ജക്റ്റ് ആയി സേവ് ചെയ്യുന്നു
+    localStorage.setItem('myBox', JSON.stringify(myBox));
+    updateBoxCount();
+    alert(name + " പെട്ടിയിൽ ചേർത്തു!");
+}
+
+
+        function addToBox(productName, farmerName, farmerContact) {
+    // പേരും ഫോൺ നമ്പറും കൂടി ഒരുമിച്ച് സേവ് ചെയ്യുന്നു
+    const itemDetails = `${productName} (കർഷകൻ: ${farmerName}, Mob: ${farmerContact})`;
+    myBox.push(itemDetails);
+    
+    localStorage.setItem('myBox', JSON.stringify(myBox));
+    updateBoxCount();
+    alert(productName + " പെട്ടിയിൽ ചേർത്തു! 📦");
+}
+
+function confirmOrder() {
+    if (myBox.length === 0) {
+        alert("പെട്ടി കാലിയാണ്!");
+        return;
+    }
+
+    // പെട്ടിയിലുള്ള എല്ലാ സാധനങ്ങളും കർഷകരുടെ നമ്പറും ലിസ്റ്റ് ചെയ്യുന്നു
+    let message = "ഹലോ അഡ്മിൻ, പുതിയ ഓർഡർ:\n\n";
+    myBox.forEach((item, index) => {
+        message += `${index + 1}. ${item.name} (കർഷകൻ: ${item.farmer}, Mob: ${item.contact})\n`;
+    });
+
+    const waLink = `https://wa.me/918089475765?text=${encodeURIComponent(message)}`;
+    window.open(waLink);
+}
+        function updateBoxCount() {
+            const btn = document.getElementById('boxBtn');
+            if(btn) btn.innerText = `🛒 എന്റെ പെട്ടി കാണുക (${myBox.length})`;
+        }
+
+        window.onload = updateBoxCount;
+        // പെട്ടിയിലുള്ള സാധനങ്ങൾ കാണിക്കാൻ
+function showBoxDetails() {
+    const modal = document.getElementById('boxModal');
+    const listDiv = document.getElementById('boxItemsList');
+    
+    if (myBox.length === 0) {
+        listDiv.innerHTML = "<p style='text-align:center; color:#666;'>നിങ്ങളുടെ പെട്ടി കാലിയാണ്! 🥦</p>";
+    } else {
+        // സാധനങ്ങളുടെ ലിസ്റ്റ് തയ്യാറാക്കുന്നു
+        let listHTML = "<ul style='padding-left:20px; line-height:1.8;'>";
+        myBox.forEach((item, index) => {
+            listHTML += `<li>${item} <span onclick="removeFromBox(${index})" style="color:red; margin-left:10px; cursor:pointer; font-size:12px;">(ഒഴിവാക്കുക)</span></li>`;
+        });
+        listHTML += "</ul>";
+        listDiv.innerHTML = listHTML;
+    }
+    modal.style.display = 'block';
+}
+
+// വിൻഡോ അടയ്ക്കാൻ
+function closeModal() {
+    document.getElementById('boxModal').style.display = 'none';
+}
+
+// സാധനം ഒഴിവാക്കാൻ
+function removeFromBox(index) {
+    myBox.splice(index, 1);
+    localStorage.setItem('myBox', JSON.stringify(myBox));
+    updateBoxCount();
+    showBoxDetails(); // ലിസ്റ്റ് പുതുക്കുന്നു
+}
+
+// വാട്സ്ആപ്പ് ഓർഡർ അയക്കാൻ
+function orderViaWhatsApp() {
+    if (myBox.length === 0) return alert("പെട്ടിയിൽ സാധനങ്ങളൊന്നുമില്ല!");
+
+    let message = "ഹലോ അഡ്മിൻ, എനിക്ക് താഴെ പറയുന്നവ വാങ്ങാൻ താല്പര്യമുണ്ട്:\n\n";
+    
+    // പെട്ടിയിലുള്ള ഓരോ സാധനവും (കർഷകന്റെ വിവരങ്ങൾ അടക്കം) മെസേജിലേക്ക് ചേർക്കുന്നു
+    myBox.forEach((item, index) => {
+        message += `${index + 1}. ${item}\n`;
+    });
+
+    const waLink = `https://wa.me/918089475765?text=${encodeURIComponent(message)}`;
+    window.open(waLink, '_blank');
+}
+
+
+// മാലിന്യത്തിന്റെ അളവ് ടൈപ്പ് ചെയ്യുമ്പോൾ ഡിസ്കൗണ്ട് കണക്കാക്കാൻ
+function calculateDiscount() {
+    const amount = document.getElementById('wasteAmount').value;
+    const discountRate = 5; // 1 കിലോയ്ക്ക് 5 രൂപ
+    const totalDiscount = amount * discountRate;
+    
+    // സ്ക്രീനിൽ ഡിസ്കൗണ്ട് തുക കാണിക്കുന്നു
+    document.getElementById('discountDisplay').innerText = totalDiscount.toFixed(2);
+}
+
+// ഡിസ്കൗണ്ട് അപ്ലൈ ചെയ്യുമ്പോൾ
+function applyBarterDiscount() {
+    const discount = document.getElementById('discountDisplay').innerText;
+    if(discount > 0) {
+        alert("അഭിനന്ദനങ്ങൾ! ₹" + discount + " ഡിസ്കൗണ്ട് നിങ്ങളുടെ അടുത്ത ഓർഡറിൽ ലഭിക്കുന്നതാണ്. ♻️");
+        
+        // ഓർഡർ അയക്കുമ്പോൾ ഈ വിവരം കൂടി ചേർക്കാൻ വേണ്ടി ലോക്കൽ സ്റ്റോറേജിൽ സേവ് ചെയ്യാം
+        localStorage.setItem('appliedDiscount', discount);
+    } else {
+        alert("ദയവായി മാലിന്യത്തിന്റെ അളവ് രേഖപ്പെടുത്തുക.");
+    }
+}
+</script>
+
+<script>
+    
+    function orderViaWhatsApp() {
+        if (myBox.length === 0) return alert("പെട്ടിയിൽ സാധനങ്ങൾ ഒന്നുമില്ല!");
+        
+        const itemsText = myBox.join('\n- ');
+        const wasteQty = document.getElementById('wasteAmount').value || 0;
+        const discountAmount = document.getElementById('discountDisplay').innerText;
+
+        let message = `ഹലോ, എനിക്ക് താഴെ പറയുന്ന സാധനങ്ങൾ വേണം:\n\n- ${itemsText}\n`;
+
+        if (wasteQty > 0) {
+            message += `\n♻️ *ബാർട്ടർ എക്സ്ചേഞ്ച് വിവരങ്ങൾ:*`;
+            message += `\nമാലിന്യം: ${wasteQty} Kg`;
+            message += `\nഡിസ്കൗണ്ട്: ₹${discountAmount}`;
+            message += `\n--------------------------`;
+        }
+
+        message += `\nദയവായി ഓർഡർ കൺഫേം ചെയ്യുമല്ലോ.`;
+        
+        const phoneNumber = "918089475765";
+        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    // ... മറ്റ് ഫങ്ക്ഷനുകൾ ...
+    
+    
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+  // നിങ്ങളുടെ ഫയർബേസ് കോൺഫിഗറേഷൻ
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyArvf9DWqivdzRArdJyRDH0Wq0NOfvs1ik",
+  authDomain: "farm-2-home-defe4.firebaseapp.com",
+  databaseURL: "https://farm-2-home-defe4-default-rtdb.firebaseio.com",
+  projectId: "farm-2-home-defe4",
+  storageBucket: "farm-2-home-defe4.firebasestorage.app",
+  messagingSenderId: "825061986053",
+  appId: "1:825061986053:web:5c1fa9652dd89d5433716c",
+  measurementId: "G-9FWC46TPPR"
+};
+  // Firebase Initialize ചെയ്യുന്നു
+  if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+  }
+  const database = firebase.database();
+
+  // ഡാറ്റ അപ്‌ലോഡ് ചെയ്യാനുള്ള ഫംഗ്ഷൻ
+  function uploadData() {
+    var name = document.getElementById('pName').value;
+    var price = document.getElementById('pPrice').value;
+
+    if(name == "" || price == "") {
+        alert("ദയവായി പേരും വിലയും നൽകുക!");
+        return;
+    }
+
+    database.ref('products/').push({
+      productName: name,
+      price: price
+    }).then(() => {
+      alert("സാധനം വിജയകരമായി ചേർത്തു! ✅");
+      document.getElementById('pName').value = "";
+      document.getElementById('pPrice').value = "";
+    });
+  }
+
+  // മറ്റൊരു ഫോണിലും ഡാറ്റ കാണാൻ സഹായിക്കുന്ന ലിസ്റ്റ്
+  const itemContainer = document.getElementById('items-container');
+  if(itemContainer) {
+    database.ref('products/').on('value', (snapshot) => {
+      itemContainer.innerHTML = ""; 
+      snapshot.forEach((childSnapshot) => {
+        var childData = childSnapshot.val();
+        itemContainer.innerHTML += `
+          <div class="product-card" style="border:1px solid #2e7d32; padding:10px; margin:10px; border-radius:10px; background:white;">
+            <h4>${childData.productName}</h4>
+            <p>വില: ₹${childData.price} / KG</p>
+          </div>
+        `;
+      });
+    });
+  }
+</script>
+
+
+</body>
+</html>
